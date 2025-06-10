@@ -1,4 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pizza Delivery Website
+
+A modern online food delivery website built with Next.js and Tailwind CSS for a restaurant. The website allows customers to browse the menu, add items to cart, and place orders with Cash on Delivery (COD) payment option.
+
+## Features
+
+- Responsive design that works on mobile, tablet, and desktop
+- Browse food by categories
+- Add items to cart with quantity control
+- Checkout process with delivery details
+- Cash on Delivery (COD) payment option
+- Order tracking with status updates
+- Beautiful UI with Tailwind CSS
+
+## Tech Stack
+
+- **Frontend & Backend**: [Next.js](https://nextjs.org)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons)
+- **Notifications**: [React Hot Toast](https://react-hot-toast.com)
 
 ## Getting Started
 

@@ -1,0 +1,6 @@
+
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="300" fill="#87CEEB" />
+  <rect x="50" y="100" width="200" height="100" rx="10" fill="#F5F5F5" />
+  <text x="150" y="160" font-family="Arial" font-size="24" text-anchor="middle" fill="#333333">Food Category</text>
+</svg>
