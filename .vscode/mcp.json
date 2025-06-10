@@ -2,8 +2,8 @@
   "inputs": [
     {
       "type": "promptString",
-      "id": "github_token1",
-      "description": "GitHub Personal Access Token",
+      "id": "github_token",
+      "description": "GitHub Personal Access Token with repo and org permissions",
       "password": true
     }
   ],
@@ -15,11 +15,11 @@
         "-i",
         "--rm",
         "-e",
-        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "GITHUB_TOKEN=${input:github_token}",
         "ghcr.io/github/github-mcp-server"
       ],
       "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token1}"
+        "GITHUB_TOKEN": "${input:github_token}"
       }
     }
   }
