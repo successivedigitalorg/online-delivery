@@ -30,5 +30,6 @@ export interface Order {
   total: number;
   status: 'pending' | 'confirmed' | 'preparing' | 'out_for_delivery' | 'delivered';
   createdAt: string;
+  estimatedDelivery: string;
   details: OrderDetails;
 }
