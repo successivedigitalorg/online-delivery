@@ -13,14 +13,16 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const addToCart = useCartStore((state) => state.addItem);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     addToCart(product);
     toast.success(`Added ${product.name} to cart`);
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-      <div className="relative h-48">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
+      <div className="relative h-40 sm:h-48">
         <div className="w-full h-full">
           <ResponsiveImage
             src={product.image}
@@ -35,11 +37,13 @@ export default function ProductCard({ product }: ProductCardProps) {
           </span>
         )}
       </div>
-      <div className="p-4">
-        <h3 className="font-bold text-lg">{product.name}</h3>
-        <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
+      <div className="p-3 sm:p-4 flex-grow flex flex-col justify-between">
+        <div>
+          <h3 className="font-bold text-base sm:text-lg mb-1">{product.name}</h3>
+          <p className="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2">{product.description}</p>
+        </div>
         <div className="flex justify-between items-center">
-          <span className="font-bold text-lg">${product.price.toFixed(2)}</span>
+          <span className="font-bold text-base sm:text-lg">${product.price.toFixed(2)}</span>
           <button
             onClick={handleAddToCart}
             className="bg-orange-500 text-white p-2 rounded-full hover:bg-orange-600 transition-colors"
