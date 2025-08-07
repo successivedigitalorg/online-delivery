@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useState, useEffect, Suspense } from "react";
 import { Order } from "@/lib/types";
 import Link from "next/link";
-import { FaCheckCircle, FaPizzaSlice, FaTruck, FaShippingFast } from "react-icons/fa";
+import { FaCheckCircle, FaPizzaSlice, FaTruck, FaShippingFast, FaStar } from "react-icons/fa";
 
 function getProgressWidth(status: string): string {
   if (status === "confirmed") return "0%";
@@ -50,7 +50,7 @@ function OrderContent() {
             }
           ],
           total: 20.97,
-          status: "confirmed",
+          status: "delivered",
           createdAt: new Date().toString(),
           details: {
             name: "John Doe",
@@ -58,7 +58,8 @@ function OrderContent() {
             email: "john@example.com",
             address: "123 Main St, City, Country",
             paymentMethod: "COD"
-          }
+          },
+          canReview: true
         });
         setLoading(false);
       }, 1000);
@@ -205,6 +206,40 @@ function OrderContent() {
               </div>
             </div>
           </div>
+
+          {/* Review Section for Delivered Orders */}
+          {order.status === 'delivered' && order.canReview && (
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-xl font-bold mb-4">Rate Your Order</h2>
+              <p className="text-gray-600 mb-4">
+                How was your experience? Your feedback helps us improve our service.
+              </p>
+              <div className="space-y-4">
+                {order.items.map((item) => (
+                  <div key={item.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-12 h-12 object-cover rounded"
+                      />
+                      <div>
+                        <p className="font-medium">{item.name}</p>
+                        <p className="text-sm text-gray-600">Qty: {item.quantity}</p>
+                      </div>
+                    </div>
+                    <Link
+                      href={`/product/${item.id}#reviews`}
+                      className="flex items-center gap-2 bg-orange-500 text-white px-3 py-1 rounded text-sm hover:bg-orange-600 transition-colors"
+                    >
+                      <FaStar className="w-3 h-3" />
+                      Rate & Review
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Order Summary */}

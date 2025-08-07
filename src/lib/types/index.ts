@@ -7,6 +7,8 @@ export interface Product {
   category: string;
   popular?: boolean;
   vegetarian?: boolean;
+  averageRating?: number;
+  reviewCount?: number;
 }
 
 export interface CartItem extends Product {
@@ -31,4 +33,32 @@ export interface Order {
   status: 'pending' | 'confirmed' | 'preparing' | 'out_for_delivery' | 'delivered';
   createdAt: string;
   details: OrderDetails;
+  canReview?: boolean;
+}
+
+export interface Review {
+  id: string;
+  productId: number;
+  orderId?: string;
+  userId: string;
+  userName: string;
+  rating: number;
+  comment: string;
+  images?: string[];
+  createdAt: string;
+  verified: boolean;
+  helpful?: number;
+  reported?: boolean;
+}
+
+export interface ReviewStats {
+  averageRating: number;
+  totalReviews: number;
+  ratingDistribution: {
+    1: number;
+    2: number;
+    3: number;
+    4: number;
+    5: number;
+  };
 }
