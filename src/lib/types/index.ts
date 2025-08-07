@@ -31,4 +31,44 @@ export interface Order {
   status: 'pending' | 'confirmed' | 'preparing' | 'out_for_delivery' | 'delivered';
   createdAt: string;
   details: OrderDetails;
+  assignedTo?: string; // Delivery personnel ID
+  estimatedDelivery?: string;
+}
+
+export interface AdminUser {
+  id: string;
+  email: string;
+  name: string;
+  role: 'admin' | 'manager' | 'staff';
+}
+
+export interface Customer {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  totalOrders: number;
+  totalSpent: number;
+  joinedAt: string;
+}
+
+export interface DeliveryPersonnel {
+  id: string;
+  name: string;
+  phone: string;
+  email: string;
+  status: 'available' | 'busy' | 'offline';
+  currentOrders: number;
+  totalDeliveries: number;
+  rating: number;
+}
+
+export interface Analytics {
+  totalOrders: number;
+  totalRevenue: number;
+  averageOrderValue: number;
+  topProducts: Array<{ productId: number; productName: string; orderCount: number }>;
+  busyHours: Array<{ hour: number; orderCount: number }>;
+  dailySales: Array<{ date: string; sales: number; orders: number }>;
 }
